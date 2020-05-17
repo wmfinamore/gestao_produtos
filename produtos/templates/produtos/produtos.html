@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Lista de Produtos{% endblock %}
+
+{% block main %}
+
+   <br>
+    <h2>Produtos</h2>
+
+    <br>
+    <table class="table table-hover">
+       <thead>
+           <tr>
+               <th scope="col">#</th>
+               <th scope="col">Produto</th>
+               <th scope="col">Preço</th>
+               <th scope="col">Descrição</th>
+               <th scope="col">Imagem</th>
+               <th scope="col">Excluir</th>
+           </tr>
+       </thead>
+       <tbody>
+            {% for p in produtos %}
+                <tr>
+                    <td scope="row"> {{ p.id }} </td>
+                    <td> <a href="{% url 'produtos_update' p.id %}">{{ p.nome }}</a> </td>
+                    <td> {{ p.preco }} </td>
+                    <td> {{ p.descricao }} </td>
+                    <td> <img src="{{ p.imagem.url }}" class="img-fluid" alt="Responsive image"></td>
+                    <td><a href="{% url 'produtos_delete' p.id %}" ><span class="badge badge-danger">Exluir Produto</span></a></td>
+                 </tr>
+            {% endfor %}
+       </tbody>
+    </table>
+    <br>
+    <a href="{% url 'produtos_new' %}" class="btn btn-primary">Novo</a>
+
+{% endblock %}
