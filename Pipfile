@@ -13,6 +13,7 @@ dj-database-url = "*"
 psycopg2 = "*"
 gunicorn = "*"
 python-decouple = "*"
+Pillow = '*'
 
 [requires]
 python_version = "3.7"
